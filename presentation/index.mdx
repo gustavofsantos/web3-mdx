@@ -1,19 +1,45 @@
-import {Cite, Text} from 'spectacle';
-import {DarkSlide, CodeSlide} from './slides';
+import { Cite, Text, Heading } from 'spectacle';
+import Tweet from './components/tweet.js';
+import { DarkSlide, CodeSlide } from './slides';
 import RegularComponent from './regular-component';
 import PullIPFS from './components/pull-ipfs.js';
 import PushIPFS from './components/push-ipfs.js';
+import IpfsPeers from './components/ipfs-peers.js';
 
-# Web3
+
+<Heading fit bold>
+  WEB3
+</Heading>
+
 **Construindo um bote salva vidas para a internet**
 
-### Gustavo Santos
+<Text fit>
+  Gustavo Santos
+</Text>
 
-gfdsantos@inf.ufpel.edu.br
+<Text fit>
+  gfdsantos@inf.ufpel.edu.br
+</Text>
 
 ---
 
-# Blockchain
+<Heading fit bold>
+  Saúde da internet hoje
+</Heading>
+
+---
+
+![tipos01](https://staltz.com/img/people-centered-web.png)
+
+---
+
+# Tour pelas ferramentas disponíveis hoje
+
+---
+
+<Heading fit bold>
+  Blockchain
+</Heading>
 
 ---
 
@@ -29,15 +55,52 @@ gfdsantos@inf.ufpel.edu.br
 
 ---
 
-# Ethereum
+<Heading fit bold>
+  Radicle
+</Heading>
 
-**o computador mundial**
+<Text>
+  Radicle is a peer-to-peer stack for creating open source software together.
+</Text>
+
+---
+export default CodeSlide
+
+```lisp
+(def update-chain-with
+  (fn [chain remote-chain-id cb-expr cb-res]
+    (def new-inputs
+      (receive! remote-chain-id (lookup :index chain)))
+    (def upd-ch
+      (fn [ch expr]
+        (def x (eval-in-chain expr ch))
+        (cb-expr expr)
+        (cb-res (view (@ :result) x))
+        (view (@ :chain) x)))
+    (foldl upd-ch chain new-inputs)))
+```
 
 ---
 
-# IPFS
+<Heading fit bold>
+  Ethereum
+</Heading>
+
+<Text fit>
+  o computador mundial
+</Text>
+
+---
+
+<Heading fit bold>
+  IPFS
+</Heading>
 
 **que tal criar uma internet resiliente e versionada?**
+
+---
+
+<IpfsPeers />
 
 ---
 
@@ -49,18 +112,29 @@ gfdsantos@inf.ufpel.edu.br
 
 ---
 
-
-# Dat
-
----
-
-# Beaker
+<Heading fit bold>
+  Dat
+</Heading>
 
 ---
 
-# Isso não é Deep Web!
+<Heading fit bold>
+  Beaker
+</Heading>
 
-**é tecnologia p2p!**
+---
+
+<Heading fit>
+  Isso não é
+</Heading>
+
+<Heading fit bold>
+  deep web!
+</Heading>
+
+<Text>
+  É tecnologia p2p!
+</Text>
 
 --- 
 
@@ -71,15 +145,25 @@ através do protocolo p2p
 
 ---
 
-# Scuttlebot
-
---- 
-
-# Manyverse
+<Heading fit bold>
+  Scuttlebot
+</Heading>
 
 ---
 
-# Interspace
+<Heading fit bold>
+  Manyverse
+</Heading>
+
+---
+
+<Heading fit bold>
+  Do It Yourself!
+</Heading>
+
+<Text>
+  Interspace
+</Text>
 
 ---
 
